@@ -18,11 +18,11 @@ interface Student {
 }
 
 const mockStudents: Student[] = [
-    { id: 'STU-001', name: 'Aarav Sharma', avatar: 'AS', grade: '5th', assignedBus: 'BUS-001', route: 'RT-01', pickupLocation: 'Sector 15, Noida', dropLocation: 'School Gate A', parentName: 'Rajesh Sharma', parentPhone: '+91 98765 43210', attendance: 95, status: 'active' },
-    { id: 'STU-002', name: 'Diya Patel', avatar: 'DP', grade: '7th', assignedBus: 'BUS-002', route: 'RT-02', pickupLocation: 'Indirapuram', dropLocation: 'School Gate B', parentName: 'Amit Patel', parentPhone: '+91 98765 43211', attendance: 92, status: 'active' },
-    { id: 'STU-003', name: 'Rohan Gupta', avatar: 'RG', grade: '6th', assignedBus: 'BUS-001', route: 'RT-01', pickupLocation: 'Sector 18, Noida', dropLocation: 'School Gate A', parentName: 'Priya Gupta', parentPhone: '+91 98765 43212', attendance: 88, status: 'absent' },
-    { id: 'STU-004', name: 'Ananya Mehta', avatar: 'AM', grade: '8th', assignedBus: 'BUS-003', route: 'RT-03', pickupLocation: 'Vasundhara', dropLocation: 'School Gate C', parentName: 'Vikram Mehta', parentPhone: '+91 98765 43213', attendance: 97, status: 'active' },
-    { id: 'STU-005', name: 'Kabir Singh', avatar: 'KS', grade: '5th', assignedBus: 'BUS-002', route: 'RT-02', pickupLocation: 'Mayur Vihar', dropLocation: 'School Gate B', parentName: 'Neha Singh', parentPhone: '+91 98765 43214', attendance: 90, status: 'active' },
+    { id: 'STU-001', name: 'Subash Shrestha', avatar: 'AS', grade: '5th', assignedBus: 'BUS-001', route: 'RT-01', pickupLocation: 'Sector 15, Noida', dropLocation: 'School Gate A', parentName: 'Rajesh Sharma', parentPhone: '+91 98765 43210', attendance: 95, status: 'active' },
+    { id: 'STU-002', name: 'Syam Jhah', avatar: 'DP', grade: '7th', assignedBus: 'BUS-002', route: 'RT-02', pickupLocation: 'Indirapuram', dropLocation: 'School Gate B', parentName: 'Amit Patel', parentPhone: '+91 98765 43211', attendance: 92, status: 'active' },
+    { id: 'STU-003', name: 'Rahul Adhikari', avatar: 'RG', grade: '6th', assignedBus: 'BUS-001', route: 'RT-01', pickupLocation: 'Sector 18, Noida', dropLocation: 'School Gate A', parentName: 'Priya Gupta', parentPhone: '+91 98765 43212', attendance: 88, status: 'absent' },
+    { id: 'STU-004', name: 'Ranjan Gurung', avatar: 'AM', grade: '8th', assignedBus: 'BUS-003', route: 'RT-03', pickupLocation: 'Vasundhara', dropLocation: 'School Gate C', parentName: 'Vikram Mehta', parentPhone: '+91 98765 43213', attendance: 97, status: 'active' },
+    { id: 'STU-005', name: 'Ramin Lama', avatar: 'KS', grade: '5th', assignedBus: 'BUS-002', route: 'RT-02', pickupLocation: 'Mayur Vihar', dropLocation: 'School Gate B', parentName: 'Neha Singh', parentPhone: '+91 98765 43214', attendance: 90, status: 'active' },
 ];
 
 const Students = () => {
@@ -182,7 +182,7 @@ const Students = () => {
                                     <p className="font-medium text-gray-900">{selectedStudent.dropLocation}</p>
                                 </div>
 
-                                <div className="pt-4 border-t border-gray-200">
+                                {/* <div className="pt-4 border-t border-gray-200">
                                     <h4 className="font-medium text-gray-900 mb-3">Parent Information</h4>
                                     <div className="space-y-2">
                                         <div>
@@ -194,7 +194,7 @@ const Students = () => {
                                             <p className="font-medium text-gray-900">{selectedStudent.parentPhone}</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
 
                                 <div className="pt-4 border-t border-gray-200">
                                     <label className="text-sm text-gray-500 flex items-center gap-2">
