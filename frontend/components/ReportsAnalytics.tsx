@@ -18,9 +18,9 @@ const routeEfficiency = [
 ];
 
 const boardingMethodData = [
-  { id: 'qr-verified', name: 'Unqualified', value: 650, color: ' #fd7011' },
-  { id: 'ble-sync', name: 'Considerable', value: 220, color: '#1ae913' },
-  { id: 'pending-sync', name: 'Qualified', value: 130, color: '#1b49f1' },
+  { id: 'qr-verified', name: 'QR Verified', value: 650, color: ' #4F6EDB' },
+  { id: 'ble-sync', name: 'BLE Sync', value: 220, color: '#3B82F6' },
+  { id: 'pending-sync', name: 'Pending Sync', value: 130, color: '#F59E0B' },
 ];
 
 const driverPerformance = [
