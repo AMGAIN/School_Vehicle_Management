@@ -52,7 +52,7 @@ export default function Page() {
   <div className="flex h-screen overflow-hidden">
     
     {/* Sidebar */}
-    <div className="w-64 h-full overflow-y-auto bg-white border-r">
+    <div className="h-full overflow-y-auto bg-white">
       <SideNav currentPage={currentPage} onNavigate={setCurrentPage} />
     </div>
 
