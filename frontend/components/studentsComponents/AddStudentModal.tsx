@@ -103,7 +103,7 @@ const AddStudentModal = ({ onClose }: AddStudentModalProps) => {
                     required
                   />
                 </div>
-                <div>
+                {/* <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Phone Number *
                   </label>
@@ -113,11 +113,11 @@ const AddStudentModal = ({ onClose }: AddStudentModalProps) => {
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4F6EDB]"
                     required
                   />
-                </div>
+                </div> */}
               </div>
             </div>
 
-            <div className="pt-4 border-t border-gray-200">
+            {/* <div className="pt-4 border-t border-gray-200">
               <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <Bus className="w-5 h-5" />
                 Bus Assignment
@@ -146,9 +146,9 @@ const AddStudentModal = ({ onClose }: AddStudentModalProps) => {
                   </select>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className="pt-4 border-t border-gray-200">
+            {/* <div className="pt-4 border-t border-gray-200">
               <h4 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                 <MapPin className="w-5 h-5" />
                 Pickup & Drop Locations
@@ -177,8 +177,8 @@ const AddStudentModal = ({ onClose }: AddStudentModalProps) => {
                   />
                 </div>
               </div>
-            </div>
-
+            </div> */}
+{/* 
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
               <div className="flex items-start gap-2">
                 <QrCode className="w-5 h-5 text-blue-600 mt-0.5" />
@@ -193,7 +193,7 @@ const AddStudentModal = ({ onClose }: AddStudentModalProps) => {
                   </p>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="flex gap-3 pt-4">
               <button

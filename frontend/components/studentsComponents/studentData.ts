@@ -3,7 +3,7 @@ import type { Student } from "./types";
 export const mockStudents: Student[] = [
   {
     id: "STU-001",
-    name: "Aarav Sharma",
+    name: "Aarav Adhikari",
     avatar: "AS",
     grade: "5th",
     assignedBus: "BUS-001",
@@ -17,7 +17,7 @@ export const mockStudents: Student[] = [
   },
   {
     id: "STU-002",
-    name: "Diya Patel",
+    name: "Diya Bist",
     avatar: "DP",
     grade: "7th",
     assignedBus: "BUS-002",
@@ -45,7 +45,7 @@ export const mockStudents: Student[] = [
   },
   {
     id: "STU-004",
-    name: "Ananya Mehta",
+    name: "Ananya Baniya",
     avatar: "AM",
     grade: "8th",
     assignedBus: "BUS-003",
@@ -59,7 +59,7 @@ export const mockStudents: Student[] = [
   },
   {
     id: "STU-005",
-    name: "Kabir Singh",
+    name: "Kabir Chhetri",
     avatar: "KS",
     grade: "5th",
     assignedBus: "BUS-002",

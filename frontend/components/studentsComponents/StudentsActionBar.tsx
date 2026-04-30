@@ -25,10 +25,10 @@ const StudentsActionBar = ({
           />
         </div>
         <div className="flex items-center gap-3">
-          <button className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-2">
+          {/* <button className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors flex items-center gap-2">
             <Filter className="w-4 h-4" />
             Filters
-          </button>
+          </button> */}
           <button
             onClick={onAddStudent}
             className="px-4 py-2 bg-[#4F6EDB] text-white rounded-lg hover:bg-[#4F6EDB]/90 transition-colors flex items-center gap-2"
