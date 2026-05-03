@@ -34,10 +34,10 @@ const SideNav: React.FC<SideNavProps> = ({ currentPage, onNavigate }) => {
                 <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200 flex-shrink-0">
                     {!sidebarCollapsed && (
                         <div className="flex items-center gap-2">
-                            <div className="w-10 h-10 rounded-lg flex items-center justify-center">
+                            {/* <div className="w-10 h-10 rounded-lg flex items-center justify-center">
                                 <Image src='/yetri-logo.png' width={100} height={100} alt='yetri-logo' className="w-15 h-15" />
-                            </div>
-                            <span className="text-xl font-semibold text-gray-900">YatriTECH</span>
+                            </div> */}
+                            <span className="text-lg  font-semibold text-gray-600">VEHICLE Management</span>
                         </div>
                     )}
                     <button
