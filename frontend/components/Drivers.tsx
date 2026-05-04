@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { Search, UserPlus, Phone, Mail, Bus, AlertTriangle, CheckCircle, Zap, Clock, X } from 'lucide-react';
 import { toast } from 'sonner';
+import DriversSummaryCards from './driversComponents/DriversSummaryCards';
 
 interface Driver {
   id: string;
@@ -146,60 +147,10 @@ const Drivers = () => {
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <p className="text-sm text-gray-600">Total Drivers</p>
-          <p className="text-2xl font-semibold text-gray-900 mt-1">{drivers.length}</p>
-        </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <p className="text-sm text-gray-600">Active</p>
-          <p className="text-2xl font-semibold text-[#22C55E] mt-1">
-            {drivers.filter(d => d.status === 'active').length}
-          </p>
-        </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <p className="text-sm text-gray-600">Avg Rating</p>
-          <div className="flex items-center gap-1 mt-1">
-            <p className="text-2xl font-semibold text-gray-900">4.6</p>
-            <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-          </div>
-        </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <p className="text-sm text-gray-600">On-Time Rate</p>
-          <p className="text-2xl font-semibold text-[#3B82F6] mt-1">93%</p>
-        </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <p className="text-sm text-gray-600">Total Violations</p>
-          <p className="text-2xl font-semibold text-[#EF4444] mt-1">
-            {drivers.reduce((sum, d) => sum + d.violations.speeding + d.violations.harshBraking + d.violations.idleTime, 0)}
-          </p>
-        </div>
-      </div>
+      <DriversSummaryCards />
 
       {/* Actions Bar */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
-        <div className="flex items-center justify-between gap-4">
-          <div className="flex-1 max-w-md relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search drivers..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4F6EDB] focus:border-transparent"
-            />
-          </div>
-          <button
-            onClick={() => setShowAddModal(true)}
-            className="px-4 py-2 bg-[#4F6EDB] text-white rounded-lg hover:bg-[#4F6EDB]/90 transition-colors flex items-center gap-2"
-          >
-            <UserPlus className="w-4 h-4" />
-            Add Driver
-          </button>
-        </div>
-      </div>
+
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Drivers List */}

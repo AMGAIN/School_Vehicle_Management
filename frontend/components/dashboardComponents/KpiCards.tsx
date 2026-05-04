@@ -16,9 +16,9 @@ const KpiCards = () => {
           generalInfo.map((item, index) => {
             const Icon = item.img;
             return (
-              <div key={index} className='bg-white flex items-center justify-between rounded-xl shadow-sm border border-gray-200 p-6'>
+              <div key={index} className='bg-white flex items-center justify-between rounded-xl shadow-sm border border-gray-200 p-6 hover:scale-110 transition-transform duration-200' >
                 <div>
-                  <p className="text-sm text-gray-600">Total Buses</p>
+                  <p className="text-sm text-gray-600">{item.title}</p>
                   <p className="text-3xl font-semibold text-gray-900 mt-2">{item.num}</p>
                   <div className="flex items-center gap-1 mt-2 text-sm text-[#22C55E]">
                     <TrendingUp className="w-4 h-4" />
