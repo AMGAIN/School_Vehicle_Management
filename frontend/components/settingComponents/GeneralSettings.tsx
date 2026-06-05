@@ -4,9 +4,9 @@ import { toast } from 'sonner';
 import { Mail, MapPin, Clock, Palette } from 'lucide-react';
 
 const inputInfo = [
-    { title: "School Name", type: "text", defaultVal: "YatriTECH School" },
-    { title: "Contact Email", type: "email", defaultVal: "admin@yatritech.edu" },
-    { title: "School Address", type: "text", defaultVal: "Kathamandu" },
+    { title: "School Name", type: "text", defaultVal: "" },
+    { title: "Contact Email", type: "email", defaultVal: "" },
+    { title: "School Address", type: "text", defaultVal: "" },
 ];
 const GeneralSettings = () => {
     const [schoolName, setSchoolName] = useState('YatriTECH School');

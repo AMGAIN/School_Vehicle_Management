@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { Timer, Clock, CheckCircle, MapPin, AlertCircle, XCircle } from 'lucide-react'
 import { useState } from 'react';

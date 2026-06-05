@@ -1,7 +1,7 @@
 import React from 'react'
-import MapDisplay from './liveTrackingComponents/MapDisplay';
-import StudentActivityFeed from './liveTrackingComponents/StudentActivityFeed';
-import Kpi from './liveTrackingComponents/Kpi';
+import StudentActivityFeed from '@/components/liveTrackingComponents/StudentActivityFeed';
+import Kpi from '@/components/liveTrackingComponents/Kpi';
+import MapDisplay from '@/components/liveTrackingComponents/MapDisplay';
 
 const LiveTraking = () => {
     // const [buses] = useState<Bus[]>(mockBuses);

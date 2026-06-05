@@ -227,7 +227,7 @@ const AddParentModal = ({
                 </label>
               ))}
             </div>
-          </div>
+          </div>  
         </div>
 
         <div className="sticky bottom-0 bg-gray-50 px-6 py-4 flex items-center justify-end gap-3 border-t border-gray-200">

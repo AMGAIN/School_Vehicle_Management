@@ -23,8 +23,6 @@ const mockLogs: AttendanceLog[] = [
   { id: 'LOG-004', studentName: 'Ananya Mehta', studentId: 'STU-004', busId: 'BUS-003', type: 'drop', method: 'qr', status: 'verified', timestamp: '2026-04-21 14:05:20', location: 'School Gate C', parentName: 'Vikram Mehta', syncStatus: 'synced' },
   { id: 'LOG-005', studentName: 'Kabir Singh', studentId: 'STU-005', busId: 'BUS-002', type: 'boarding', method: 'qr', status: 'verified', timestamp: '2026-04-21 07:22:50', location: 'Mayur Vihar', parentName: 'Neha Singh', syncStatus: 'synced' },
   { id: 'LOG-006', studentName: 'Myra Khan', studentId: 'STU-006', busId: 'BUS-001', type: 'boarding', method: 'qr', status: 'unauthorized', timestamp: '2026-04-21 07:25:10', location: 'Sector 22, Noida', parentName: 'Unknown', syncStatus: 'synced' },
-  { id: 'LOG-007', studentName: 'Arjun Reddy', studentId: 'STU-007', busId: 'BUS-003', type: 'boarding', method: 'ble', status: 'verified', timestamp: '2026-04-21 07:28:30', location: 'Vasundhara', parentName: 'Sunita Reddy', syncStatus: 'synced' },
-  { id: 'LOG-008', studentName: 'Sara Ali', studentId: 'STU-008', busId: 'BUS-001', type: 'drop', method: 'qr', status: 'verified', timestamp: '2026-04-21 14:10:45', location: 'Sector 15, Noida', parentName: 'Ahmed Ali', syncStatus: 'synced' },
 ];
 
 const Attendance = () => {

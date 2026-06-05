@@ -158,7 +158,7 @@ const AlertIncidents = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> 
       {/* Alerts List */}
       <div className="space-y-3">
         {filteredAlerts.map((alert) => {

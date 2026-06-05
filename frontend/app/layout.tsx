@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import SideNav from "@/components/SideNav";
+import Nav from "@/components/Nav";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,7 +31,23 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-      {children}
+        <div className="flex h-screen overflow-hidden">
+
+          <div className="h-full overflow-y-auto bg-white">
+            <SideNav />
+          </div>
+
+          <div className="flex-1 flex flex-col h-full">
+
+            <div className="shrink-0">
+              <Nav />
+            </div>
+
+            <div className="flex-1 overflow-y-auto">
+              {children}
+            </div>
+          </div>
+        </div>
       </body>
     </html>
   );
