@@ -1,9 +1,10 @@
+import Students from '@/components/Students'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-        this is the student's page
+        <Students/>
     </div>
   )
 }

@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { useState } from 'react';
 import { Activity, Gauge, Droplet, Thermometer, Battery, AlertTriangle, TrendingUp, TrendingDown, Zap } from 'lucide-react';

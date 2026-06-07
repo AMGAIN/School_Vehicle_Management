@@ -1,9 +1,10 @@
+import BusManagement from '@/components/BusManagement'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-        this is the page for bus management.
+        <BusManagement/>
     </div>
   )
 }

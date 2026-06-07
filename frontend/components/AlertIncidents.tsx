@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { useState } from 'react';
 import { AlertTriangle, AlertCircle, Info, CheckCircle, Clock, MapPin, Zap } from 'lucide-react';

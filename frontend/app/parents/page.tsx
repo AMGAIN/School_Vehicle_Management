@@ -1,8 +1,11 @@
+import Parents from '@/components/Parents'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>This is the page for parents</div>
+    <div>
+      <Parents />
+    </div>
   )
 }
 

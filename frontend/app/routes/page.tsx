@@ -1,8 +1,11 @@
+import RouteManagement from '@/components/RouteManagement'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>This is the page for route management</div>
+    <div>
+      <RouteManagement />
+    </div>
   )
 }
 

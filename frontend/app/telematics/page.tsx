@@ -1,8 +1,11 @@
+import VehicleTelematics from '@/components/VehicleTelematics'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>This is the page for vehicle telemetics</div>
+    <div>
+      <VehicleTelematics />
+    </div>
   )
 }
 
