@@ -1,30 +1,54 @@
-import React from 'react'
-import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import React from "react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 
 const delayTrends = [
-  { id: 'jan', month: 'Jan', avgDelay: 5.2 },
-  { id: 'feb', month: 'Feb', avgDelay: 4.8 },
-  { id: 'mar', month: 'Mar', avgDelay: 6.1 },
-  { id: 'apr', month: 'Apr', avgDelay: 5.5 },
-  { id: 'may', month: 'May', avgDelay: 4.9 },
-  { id: 'jun', month: 'Jun', avgDelay: 5.8 },
+  { month: "Jan", avgDelay: 5.2 },
+  { month: "Feb", avgDelay: 4.8 },
+  { month: "Mar", avgDelay: 6.1 },
+  { month: "Apr", avgDelay: 5.5 },
+  { month: "May", avgDelay: 4.9 },
+  { month: "Jun", avgDelay: 5.8 },
 ];
 
 const DelayTrends = () => {
-    return (
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">Average Delay Trends (Minutes)</h3>
-            <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={delayTrends}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
-                    <XAxis dataKey="month" stroke="#6B7280" />
-                    <YAxis stroke="#6B7280" />
-                    <Tooltip />
-                    <Line type="monotone" dataKey="avgDelay" stroke="#F59E0B" strokeWidth={3} dot={{ fill: '#F59E0B', r: 5 }} name="Avg Delay" />
-                </LineChart>
-            </ResponsiveContainer>
-        </div>
-    )
-}
+  return (
+<div className="bg-yellow-50 p-5 rounded-2xl shadow-md border border-yellow-100 hover:shadow-lg transition">      <h3 className="text-lg font-semibold text-gray-800 mb-4">
+        Delay Trends
+      </h3>
 
-export default DelayTrends
+      <ResponsiveContainer width="100%" height={280}>
+        <LineChart data={delayTrends}>
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
+          <XAxis
+            dataKey="month"
+            axisLine={false}
+            tickLine={false}
+          />
+          <YAxis
+            axisLine={false}
+            tickLine={false}
+          />
+          <Tooltip />
+          <Line
+            type="monotone"
+            dataKey="avgDelay"
+            stroke="#F59E0B"
+            strokeWidth={3}
+            dot={{ r: 5, fill: "#F59E0B" }}
+            activeDot={{ r: 7 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
+  );
+};
+
+export default DelayTrends;
