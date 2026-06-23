@@ -7,7 +7,16 @@ import {
   User,
 } from "lucide-react";
 
-const activities = [
+type Status = "success" | "warning" | "info";
+
+type Activity = {
+  time: string;
+  event: string;
+  status: Status;
+  icon: React.ElementType;
+};
+
+const activities: Activity[] = [
   {
     time: "2 min ago",
     event: "BUS-001 completed route RT-01",
@@ -40,7 +49,14 @@ const activities = [
   },
 ];
 
-const statusStyles = {
+const statusStyles: Record<
+  Status,
+  {
+    bg: string;
+    text: string;
+    badge: string;
+  }
+> = {
   success: {
     bg: "bg-emerald-100",
     text: "text-emerald-600",
