@@ -66,21 +66,78 @@ const Attendance = () => {
       </div>
 
       {/* Info Banner */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-        <div className="flex items-start gap-3">
-          <QrCode className="w-5 h-5 text-blue-600 mt-0.5" />
-          <div>
-            <h4 className="font-semibold text-blue-900">🚌 How QR Boarding Works</h4>
-            <div className="text-sm text-blue-700 mt-2 space-y-1">
-              <p><strong>1.</strong> Each bus displays a unique QR code on windshield/door</p>
-              <p><strong>2.</strong> Parents scan the bus QR code using YatriTECH mobile app</p>
-              <p><strong>3.</strong> System verifies student is assigned to that bus</p>
-              <p><strong>4.</strong> Boarding is logged with timestamp, parent verification, and location</p>
-              <p className="mt-2 pt-2 border-t border-blue-300"><strong>Modes:</strong> Online (instant cloud sync) or Offline (BLE with delayed sync)</p>
-            </div>
-          </div>
-        </div>
+<div className="mb-6 overflow-hidden rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 via-indigo-50 to-white shadow-sm">
+  <div className="p-5">
+    <div className="flex items-start gap-4">
+
+      {/* Icon */}
+      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600 shadow-md">
+        <QrCode className="h-6 w-6 text-white" />
       </div>
+
+      <div className="flex-1">
+
+        {/* Header */}
+        <h3 className="text-lg font-bold text-gray-900">
+          QR Boarding Process
+        </h3>
+
+        <p className="mt-1 text-sm text-gray-600">
+          Every student boarding event is securely verified using a unique QR code.
+        </p>
+
+        {/* Steps */}
+        <div className="mt-5 space-y-3">
+
+          {[
+            "Each bus displays a unique QR code on the windshield or entrance door.",
+            "Parents scan the QR code using the YatriTECH mobile application.",
+            "The system verifies that the student belongs to the selected bus.",
+            "Boarding is recorded with timestamp, parent verification, and GPS location.",
+          ].map((step, index) => (
+            <div
+              key={index}
+              className="flex items-start gap-3"
+            >
+              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
+                {index + 1}
+              </div>
+
+              <p className="text-sm text-gray-700 leading-relaxed">
+                {step}
+              </p>
+            </div>
+          ))}
+
+        </div>
+
+        {/* Footer */}
+        <div className="mt-5 flex flex-wrap gap-3">
+
+          <div className="rounded-xl bg-green-50 border border-green-200 px-4 py-2">
+            <p className="text-xs text-green-600 font-semibold uppercase">
+              Online Mode
+            </p>
+            <p className="text-sm text-gray-700">
+              Instant cloud synchronization
+            </p>
+          </div>
+
+          <div className="rounded-xl bg-amber-50 border border-amber-200 px-4 py-2">
+            <p className="text-xs text-amber-600 font-semibold uppercase">
+              Offline Mode
+            </p>
+            <p className="text-sm text-gray-700">
+              BLE verification with delayed sync
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
