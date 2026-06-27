@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { useState } from 'react';
-import { Calendar, Download, Filter, Search, CheckCircle, XCircle, AlertCircle, Timer, QrCode, Bluetooth } from 'lucide-react';
+import { Calendar, Download,  ClipboardList, CheckCircle2,RefreshCcw, Filter, Search, CheckCircle, XCircle, AlertCircle, Timer, QrCode, Bluetooth } from 'lucide-react';
 
 interface AttendanceLog {
   id: string;
@@ -27,7 +27,7 @@ const mockLogs: AttendanceLog[] = [
 ];
 
 const Attendance = () => {
-    const [logs] = useState<AttendanceLog[]>(mockLogs);
+  const [logs] = useState<AttendanceLog[]>(mockLogs);
   const [searchQuery, setSearchQuery] = useState('');
   const [typeFilter, setTypeFilter] = useState<'all' | 'boarding' | 'drop'>('all');
   const [statusFilter, setStatusFilter] = useState<'all' | 'verified' | 'pending' | 'unauthorized'>('all');
@@ -66,110 +66,173 @@ const Attendance = () => {
       </div>
 
       {/* Info Banner */}
-<div className="mb-6 overflow-hidden rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 via-indigo-50 to-white shadow-sm">
-  <div className="p-5">
-    <div className="flex items-start gap-4">
+      <div className="mb-6 overflow-hidden rounded-2xl border border-blue-100 bg-gradient-to-r from-blue-50 via-indigo-50 to-white shadow-sm">
+        <div className="p-5">
+          <div className="flex items-start gap-4">
 
-      {/* Icon */}
-      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600 shadow-md">
-        <QrCode className="h-6 w-6 text-white" />
-      </div>
+            {/* Icon */}
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600 shadow-md">
+              <QrCode className="h-6 w-6 text-white" />
+            </div>
 
-      <div className="flex-1">
+            <div className="flex-1">
 
-        {/* Header */}
-        <h3 className="text-lg font-bold text-gray-900">
-          QR Boarding Process
-        </h3>
+              {/* Header */}
+              <h3 className="text-lg font-bold text-gray-900">
+                QR Boarding Process
+              </h3>
 
-        <p className="mt-1 text-sm text-gray-600">
-          Every student boarding event is securely verified using a unique QR code.
-        </p>
+              <p className="mt-1 text-sm text-gray-600">
+                Every student boarding event is securely verified using a unique QR code.
+              </p>
 
-        {/* Steps */}
-        <div className="mt-5 space-y-3">
+              {/* Steps */}
+              <div className="mt-5 space-y-3">
 
-          {[
-            "Each bus displays a unique QR code on the windshield or entrance door.",
-            "Parents scan the QR code using the YatriTECH mobile application.",
-            "The system verifies that the student belongs to the selected bus.",
-            "Boarding is recorded with timestamp, parent verification, and GPS location.",
-          ].map((step, index) => (
-            <div
-              key={index}
-              className="flex items-start gap-3"
-            >
-              <div className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
-                {index + 1}
+                {[
+                  "Each bus displays a unique QR code on the windshield or entrance door.",
+                  "Parents scan the QR code using the YatriTECH mobile application.",
+                  "The system verifies that the student belongs to the selected bus.",
+                  "Boarding is recorded with timestamp, parent verification, and GPS location.",
+                ].map((step, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-3"
+                  >
+                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-xs font-bold text-white">
+                      {index + 1}
+                    </div>
+
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      {step}
+                    </p>
+                  </div>
+                ))}
+
               </div>
 
-              <p className="text-sm text-gray-700 leading-relaxed">
-                {step}
-              </p>
+              {/* Footer */}
+              <div className="mt-5 flex flex-wrap gap-3">
+
+                <div className="rounded-xl bg-green-50 border border-green-200 px-4 py-2">
+                  <p className="text-xs text-green-600 font-semibold uppercase">
+                    Online Mode
+                  </p>
+                  <p className="text-sm text-gray-700">
+                    Instant cloud synchronization
+                  </p>
+                </div>
+
+                <div className="rounded-xl bg-amber-50 border border-amber-200 px-4 py-2">
+                  <p className="text-xs text-amber-600 font-semibold uppercase">
+                    Offline Mode
+                  </p>
+                  <p className="text-sm text-gray-700">
+                    BLE verification with delayed sync
+                  </p>
+                </div>
+
+              </div>
+
             </div>
-          ))}
-
-        </div>
-
-        {/* Footer */}
-        <div className="mt-5 flex flex-wrap gap-3">
-
-          <div className="rounded-xl bg-green-50 border border-green-200 px-4 py-2">
-            <p className="text-xs text-green-600 font-semibold uppercase">
-              Online Mode
-            </p>
-            <p className="text-sm text-gray-700">
-              Instant cloud synchronization
-            </p>
           </div>
-
-          <div className="rounded-xl bg-amber-50 border border-amber-200 px-4 py-2">
-            <p className="text-xs text-amber-600 font-semibold uppercase">
-              Offline Mode
-            </p>
-            <p className="text-sm text-gray-700">
-              BLE verification with delayed sync
-            </p>
-          </div>
-
         </div>
+      </div>
 
+{/* Summary Cards */}
+<div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-5 mb-6">
+
+  {/* Total Logs */}
+  <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 p-5">
+    <div className="flex justify-between items-start">
+      <div>
+        <p className="text-sm text-gray-500">Total Logs</p>
+        <h2 className="text-3xl font-bold text-gray-900 mt-2">
+          {logs.length}
+        </h2>
+      </div>
+
+      <div className="h-12 w-12 rounded-xl bg-slate-100 flex items-center justify-center">
+        <ClipboardList className="h-6 w-6 text-slate-700" />
       </div>
     </div>
-  </div>
-</div>
 
-      {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <p className="text-sm text-gray-600">Total Logs Today</p>
-          <p className="text-2xl font-semibold text-gray-900 mt-1">{logs.length}</p>
-        </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <p className="text-sm text-gray-600">Verified</p>
-          <p className="text-2xl font-semibold text-[#22C55E] mt-1">
-            {logs.filter(l => l.status === 'verified').length}
-          </p>
-        </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <p className="text-sm text-gray-600">Pending Sync</p>
-          <p className="text-2xl font-semibold text-[#F59E0B] mt-1">
-            {logs.filter(l => l.syncStatus === 'pending').length}
-          </p>
-        </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <p className="text-sm text-gray-600">QR Scans</p>
-          <p className="text-2xl font-semibold text-[#4F6EDB] mt-1">
-            {logs.filter(l => l.method === 'qr').length}
-          </p>
-        </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <p className="text-sm text-gray-600">BLE Syncs</p>
-          <p className="text-2xl font-semibold text-[#3B82F6] mt-1">
-            {logs.filter(l => l.method === 'ble').length}
-          </p>
-        </div>
+    <div className="mt-4 h-1 rounded-full bg-slate-500" />
+  </div>
+
+  {/* Verified */}
+  <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 p-5">
+    <div className="flex justify-between items-start">
+      <div>
+        <p className="text-sm text-gray-500">Verified</p>
+        <h2 className="text-3xl font-bold text-green-600 mt-2">
+          {logs.filter((l) => l.status === "verified").length}
+        </h2>
       </div>
+
+      <div className="h-12 w-12 rounded-xl bg-green-100 flex items-center justify-center">
+        <CheckCircle2 className="h-6 w-6 text-green-600" />
+      </div>
+    </div>
+
+    <div className="mt-4 h-1 rounded-full bg-green-500" />
+  </div>
+
+  {/* Pending Sync */}
+  <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 p-5">
+    <div className="flex justify-between items-start">
+      <div>
+        <p className="text-sm text-gray-500">Pending Sync</p>
+        <h2 className="text-3xl font-bold text-amber-500 mt-2">
+          {logs.filter((l) => l.syncStatus === "pending").length}
+        </h2>
+      </div>
+
+      <div className="h-12 w-12 rounded-xl bg-amber-100 flex items-center justify-center">
+        <RefreshCcw className="h-6 w-6 text-amber-500" />
+      </div>
+    </div>
+
+    <div className="mt-4 h-1 rounded-full bg-amber-500" />
+  </div>
+
+  {/* QR */}
+  <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 p-5">
+    <div className="flex justify-between items-start">
+      <div>
+        <p className="text-sm text-gray-500">QR Scans</p>
+        <h2 className="text-3xl font-bold text-indigo-600 mt-2">
+          {logs.filter((l) => l.method === "qr").length}
+        </h2>
+      </div>
+
+      <div className="h-12 w-12 rounded-xl bg-indigo-100 flex items-center justify-center">
+        <QrCode className="h-6 w-6 text-indigo-600" />
+      </div>
+    </div>
+
+    <div className="mt-4 h-1 rounded-full bg-indigo-600" />
+  </div>
+
+  {/* BLE */}
+  <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 p-5">
+    <div className="flex justify-between items-start">
+      <div>
+        <p className="text-sm text-gray-500">BLE Syncs</p>
+        <h2 className="text-3xl font-bold text-blue-600 mt-2">
+          {logs.filter((l) => l.method === "ble").length}
+        </h2>
+      </div>
+
+      <div className="h-12 w-12 rounded-xl bg-blue-100 flex items-center justify-center">
+        <Bluetooth className="h-6 w-6 text-blue-600" />
+      </div>
+    </div>
+
+    <div className="mt-4 h-1 rounded-full bg-blue-600" />
+  </div>
+
+</div>
 
       {/* Filters */}
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
@@ -284,7 +347,7 @@ const Attendance = () => {
           <p className="text-gray-500">No attendance logs found matching your filters</p>
         </div>
       )}
-    </div>  )
+    </div>)
 }
 
 export default Attendance
