@@ -134,7 +134,9 @@ const RouteManagement = () => {
           onSelectRoute={setSelectedRoute}
         />
 
-        <RouteDetail selectedRoute={selectedRoute} />
+        <div className="sticky top-4 self-start">
+          <RouteDetail selectedRoute={selectedRoute} />
+        </div>
       </div>
 
       <CreateRoute
