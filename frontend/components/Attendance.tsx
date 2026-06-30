@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { useState } from 'react';
-import { Calendar, Download,  ClipboardList, CheckCircle2,RefreshCcw, Filter, Search, CheckCircle, XCircle, AlertCircle, Timer, QrCode, Bluetooth } from 'lucide-react';
+import { Calendar, Download, ClipboardList, CheckCircle2, RefreshCcw, Filter, Search, CheckCircle, XCircle, AlertCircle, Timer, QrCode, Bluetooth } from 'lucide-react';
 
 interface AttendanceLog {
   id: string;
@@ -17,6 +17,54 @@ interface AttendanceLog {
   syncStatus: 'synced' | 'pending';
 }
 
+// Summary Card Data
+const summaryCards = [
+  {
+    title: "Total Logs",
+    value: 3,
+    icon: ClipboardList,
+    textColor: "text-gray-900",
+    iconColor: "text-slate-700",
+    iconBg: "bg-slate-100",
+    barColor: "bg-slate-500",
+  },
+  {
+    title: "Verified",
+    value: 8,
+    icon: CheckCircle2,
+    textColor: "text-green-600",
+    iconColor: "text-green-600",
+    iconBg: "bg-green-100",
+    barColor: "bg-green-500",
+  },
+  {
+    title: "Pending Sync",
+    value: 9,
+    icon: RefreshCcw,
+    textColor: "text-amber-500",
+    iconColor: "text-amber-500",
+    iconBg: "bg-amber-100",
+    barColor: "bg-amber-500",
+  },
+  {
+    title: "QR Scans",
+    value: 7,
+    icon: QrCode,
+    textColor: "text-indigo-600",
+    iconColor: "text-indigo-600",
+    iconBg: "bg-indigo-100",
+    barColor: "bg-indigo-600",
+  },
+  {
+    title: "BLE Syncs",
+    value: 9,
+    icon: Bluetooth,
+    textColor: "text-blue-600",
+    iconColor: "text-blue-600",
+    iconBg: "bg-blue-100",
+    barColor: "bg-blue-600",
+  },
+];
 const mockLogs: AttendanceLog[] = [
   { id: 'LOG-001', studentName: 'Aarav Sharma', studentId: 'STU-001', busId: 'BUS-001', type: 'boarding', method: 'qr', status: 'verified', timestamp: '2026-04-21 07:15:30', location: 'Sector 15, Noida', parentName: 'Rajesh Sharma', syncStatus: 'synced' },
   { id: 'LOG-002', studentName: 'Diya Patel', studentId: 'STU-002', busId: 'BUS-002', type: 'boarding', method: 'ble', status: 'pending', timestamp: '2026-04-21 07:18:45', location: 'Indirapuram', parentName: 'Amit Patel', syncStatus: 'pending' },
@@ -25,6 +73,7 @@ const mockLogs: AttendanceLog[] = [
   { id: 'LOG-005', studentName: 'Kabir Singh', studentId: 'STU-005', busId: 'BUS-002', type: 'boarding', method: 'qr', status: 'verified', timestamp: '2026-04-21 07:22:50', location: 'Mayur Vihar', parentName: 'Neha Singh', syncStatus: 'synced' },
   { id: 'LOG-006', studentName: 'Myra Khan', studentId: 'STU-006', busId: 'BUS-001', type: 'boarding', method: 'qr', status: 'unauthorized', timestamp: '2026-04-21 07:25:10', location: 'Sector 22, Noida', parentName: 'Unknown', syncStatus: 'synced' },
 ];
+
 
 const Attendance = () => {
   const [logs] = useState<AttendanceLog[]>(mockLogs);
@@ -141,97 +190,34 @@ const Attendance = () => {
 
 {/* Summary Cards */}
 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-5 mb-6">
+  {summaryCards.map((card) => {
+    const Icon = card.icon;
 
-  {/* Total Logs */}
-  <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 p-5">
-    <div className="flex justify-between items-start">
-      <div>
-        <p className="text-sm text-gray-500">Total Logs</p>
-        <h2 className="text-3xl font-bold text-gray-900 mt-2">
-          {logs.length}
-        </h2>
+    return (
+      <div
+        key={card.title}
+        className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 p-5"
+      >
+        <div className="flex justify-between items-start">
+          <div>
+            <p className="text-sm text-gray-500">{card.title}</p>
+
+            <h2 className={`text-3xl font-bold mt-2 ${card.textColor}`}>
+              {card.value}
+            </h2>
+          </div>
+
+          <div
+            className={`h-12 w-12 rounded-xl ${card.iconBg} flex items-center justify-center`}
+          >
+            <Icon className={`h-6 w-6 ${card.iconColor}`} />
+          </div>
+        </div>
+
+        <div className={`mt-4 h-1 rounded-full ${card.barColor}`} />
       </div>
-
-      <div className="h-12 w-12 rounded-xl bg-slate-100 flex items-center justify-center">
-        <ClipboardList className="h-6 w-6 text-slate-700" />
-      </div>
-    </div>
-
-    <div className="mt-4 h-1 rounded-full bg-slate-500" />
-  </div>
-
-  {/* Verified */}
-  <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 p-5">
-    <div className="flex justify-between items-start">
-      <div>
-        <p className="text-sm text-gray-500">Verified</p>
-        <h2 className="text-3xl font-bold text-green-600 mt-2">
-          {logs.filter((l) => l.status === "verified").length}
-        </h2>
-      </div>
-
-      <div className="h-12 w-12 rounded-xl bg-green-100 flex items-center justify-center">
-        <CheckCircle2 className="h-6 w-6 text-green-600" />
-      </div>
-    </div>
-
-    <div className="mt-4 h-1 rounded-full bg-green-500" />
-  </div>
-
-  {/* Pending Sync */}
-  <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 p-5">
-    <div className="flex justify-between items-start">
-      <div>
-        <p className="text-sm text-gray-500">Pending Sync</p>
-        <h2 className="text-3xl font-bold text-amber-500 mt-2">
-          {logs.filter((l) => l.syncStatus === "pending").length}
-        </h2>
-      </div>
-
-      <div className="h-12 w-12 rounded-xl bg-amber-100 flex items-center justify-center">
-        <RefreshCcw className="h-6 w-6 text-amber-500" />
-      </div>
-    </div>
-
-    <div className="mt-4 h-1 rounded-full bg-amber-500" />
-  </div>
-
-  {/* QR */}
-  <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 p-5">
-    <div className="flex justify-between items-start">
-      <div>
-        <p className="text-sm text-gray-500">QR Scans</p>
-        <h2 className="text-3xl font-bold text-indigo-600 mt-2">
-          {logs.filter((l) => l.method === "qr").length}
-        </h2>
-      </div>
-
-      <div className="h-12 w-12 rounded-xl bg-indigo-100 flex items-center justify-center">
-        <QrCode className="h-6 w-6 text-indigo-600" />
-      </div>
-    </div>
-
-    <div className="mt-4 h-1 rounded-full bg-indigo-600" />
-  </div>
-
-  {/* BLE */}
-  <div className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 p-5">
-    <div className="flex justify-between items-start">
-      <div>
-        <p className="text-sm text-gray-500">BLE Syncs</p>
-        <h2 className="text-3xl font-bold text-blue-600 mt-2">
-          {logs.filter((l) => l.method === "ble").length}
-        </h2>
-      </div>
-
-      <div className="h-12 w-12 rounded-xl bg-blue-100 flex items-center justify-center">
-        <Bluetooth className="h-6 w-6 text-blue-600" />
-      </div>
-    </div>
-
-    <div className="mt-4 h-1 rounded-full bg-blue-600" />
-  </div>
-
+    );
+  })}
 </div>
 
       {/* Filters */}
