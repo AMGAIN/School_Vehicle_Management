@@ -24,6 +24,36 @@ const mockAlerts: Alert[] = [
   { id: 'ALT-006', type: 'info', category: 'delay', title: 'Minor Delay', description: 'Traffic congestion on route RT-01', busId: 'BUS-001', timestamp: '18 min ago', status: 'resolved' },
 ];
 
+const summaryCards = [
+  {
+    title: "Total Alerts",
+    value: 4,
+    icon: Info,
+    valueColor: "text-gray-900",
+    iconColor: "text-gray-400",
+  },
+  {
+    title: "Critical",
+    value: 7,
+    icon: AlertCircle,
+    valueColor: "text-[#EF4444]",
+    iconColor: "text-[#EF4444]",
+  },
+  {
+    title: "Warning",
+    value: 9,
+    icon: AlertTriangle,
+    valueColor: "text-[#F59E0B]",
+    iconColor: "text-[#F59E0B]",
+  },
+  {
+    title: "Active",
+    value: 3,
+    icon: AlertCircle,
+    valueColor: "text-[#3B82F6]",
+    iconColor: "text-[#3B82F6]",
+  },
+];
 const AlertIncidents = () => {
 
   const [alerts] = useState<Alert[]>(mockAlerts);
@@ -77,48 +107,27 @@ const AlertIncidents = () => {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Total Alerts</p>
-              <p className="text-2xl font-semibold text-gray-900 mt-1">{alerts.length}</p>
+        {summaryCards.map((card) => {
+          const Icon = card.icon;
+
+          return (
+            <div
+              key={card.title}
+              className="bg-white rounded-lg shadow-sm border border-gray-200 p-4"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-600">{card.title}</p>
+                  <p className={`text-2xl font-semibold mt-1 ${card.valueColor}`}>
+                    {card.value}
+                  </p>
+                </div>
+
+                <Icon className={`w-8 h-8 ${card.iconColor}`} />
+              </div>
             </div>
-            <Info className="w-8 h-8 text-gray-400" />
-          </div>
-        </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Critical</p>
-              <p className="text-2xl font-semibold text-[#EF4444] mt-1">
-                {alerts.filter(a => a.type === 'critical').length}
-              </p>
-            </div>
-            <AlertCircle className="w-8 h-8 text-[#EF4444]" />
-          </div>
-        </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Warning</p>
-              <p className="text-2xl font-semibold text-[#F59E0B] mt-1">
-                {alerts.filter(a => a.type === 'warning').length}
-              </p>
-            </div>
-            <AlertTriangle className="w-8 h-8 text-[#F59E0B]" />
-          </div>
-        </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Active</p>
-              <p className="text-2xl font-semibold text-[#3B82F6] mt-1">
-                {alerts.filter(a => a.status === 'active').length}
-              </p>
-            </div>
-            <AlertCircle className="w-8 h-8 text-[#3B82F6]" />
-          </div>
-        </div>
+          );
+        })}
       </div>
 
       {/* Filters */}
@@ -132,8 +141,8 @@ const AlertIncidents = () => {
                   key={type}
                   onClick={() => setFilter(type)}
                   className={`px-4 py-2 rounded-lg transition-colors ${filter === type
-                      ? 'bg-[#4F6EDB] text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-[#4F6EDB] text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                 >
                   {type.charAt(0).toUpperCase() + type.slice(1)}
@@ -149,8 +158,8 @@ const AlertIncidents = () => {
                   key={status}
                   onClick={() => setStatusFilter(status)}
                   className={`px-4 py-2 rounded-lg transition-colors ${statusFilter === status
-                      ? 'bg-[#4F6EDB] text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-[#4F6EDB] text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                 >
                   {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -159,7 +168,7 @@ const AlertIncidents = () => {
             </div>
           </div>
         </div>
-      </div> 
+      </div>
       {/* Alerts List */}
       <div className="space-y-3">
         {filteredAlerts.map((alert) => {
@@ -183,8 +192,8 @@ const AlertIncidents = () => {
                           {alert.type.toUpperCase()}
                         </span>
                         <span className={`px-2 py-1 rounded text-xs font-medium ${alert.status === 'active' ? 'bg-red-100 text-red-800' :
-                            alert.status === 'acknowledged' ? 'bg-yellow-100 text-yellow-800' :
-                              'bg-green-100 text-green-800'
+                          alert.status === 'acknowledged' ? 'bg-yellow-100 text-yellow-800' :
+                            'bg-green-100 text-green-800'
                           }`}>
                           {alert.status}
                         </span>
