@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SideNav from "@/components/SideNav";
 import Nav from "@/components/Nav";
 import { Dashboard } from "@/components/Dashboard";
@@ -18,6 +18,14 @@ import Settings from "@/components/Settings";
 
 export default function Page() {
   const [currentPage, setCurrentPage] = useState("dashboard");
+  const [events, setEvents] = useState([]);
+  useEffect(()=>{
+    fetch("http://localhost:2000/dashboard")
+    .then(Response=>Response.json())
+    .then(data => {
+      setEvents(data);
+    });
+  },[])
   const renderPage = () => {
     switch (currentPage) {
       case "dashboard":
