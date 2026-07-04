@@ -9,11 +9,42 @@ import RouteAnalysis from './reportAnalysisComponents/RouteAnalysis';
 import DelayTrends from './reportAnalysisComponents/DelayTrends';
 import DriverPerformance from './reportAnalysisComponents/DriverPerformance';
 
+const summaryCards = [
+  {
+    title: "Avg Attendance",
+    value: "94.3%",
+    trend: "+2.1% vs last month",
+    trendColor: "text-[#22C55E]",
+    icon: TrendingUp,
+  },
+  {
+    title: "On-Time Rate",
+    value: "85.8%",
+    trend: "+5.2% vs last month",
+    trendColor: "text-[#22C55E]",
+    icon: TrendingUp,
+  },
+  {
+    title: "Avg Delay (min)",
+    value: "5.2",
+    trend: "-1.3 vs last month",
+    trendColor: "text-[#EF4444]",
+    icon: TrendingDown,
+  },
+  {
+    title: "Total Trips",
+    value: "1,245",
+    trend: "This month",
+    trendColor: "text-gray-600",
+    icon: null,
+  },
+];
+
 const ReportsAnalytics = () => {
-    const [dateRange, setDateRange] = useState('last-30-days');
+  const [dateRange, setDateRange] = useState('last-30-days');
 
   return (
-        <div className="p-6">
+    <div className="p-6">
       <div className="mb-6 flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-semibold text-gray-900">Reports & Analytics</h1>
@@ -39,56 +70,31 @@ const ReportsAnalytics = () => {
 
       {/* Summary Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Avg Attendance</p>
-              <p className="text-3xl font-semibold text-gray-900 mt-2">94.3%</p>
-              <div className="flex items-center gap-1 mt-2 text-sm text-[#22C55E]">
-                <TrendingUp className="w-4 h-4" />
-                <span>+2.1% vs last month</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        {summaryCards.map((card, index) => {
+          const Icon = card.icon;
 
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">On-Time Rate</p>
-              <p className="text-3xl font-semibold text-gray-900 mt-2">85.8%</p>
-              <div className="flex items-center gap-1 mt-2 text-sm text-[#22C55E]">
-                <TrendingUp className="w-4 h-4" />
-                <span>+5.2% vs last month</span>
-              </div>
-            </div>
-          </div>
-        </div>
+          return (
+            <div
+              key={index}
+              className="bg-white rounded-xl shadow-sm border border-gray-200 p-6"
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-600">{card.title}</p>
 
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Avg Delay (min)</p>
-              <p className="text-3xl font-semibold text-gray-900 mt-2">5.2</p>
-              <div className="flex items-center gap-1 mt-2 text-sm text-[#EF4444]">
-                <TrendingDown className="w-4 h-4" />
-                <span>-1.3 vs last month</span>
-              </div>
-            </div>
-          </div>
-        </div>
+                  <p className="text-3xl font-semibold text-gray-900 mt-2">
+                    {card.value}
+                  </p>
 
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Total Trips</p>
-              <p className="text-3xl font-semibold text-gray-900 mt-2">1,245</p>
-              <div className="flex items-center gap-1 mt-2 text-sm text-gray-600">
-                <span>This month</span>
+                  <div className={`flex items-center gap-1 mt-2 text-sm ${card.trendColor}`}>
+                    {Icon && <Icon className="w-4 h-4" />}
+                    <span>{card.trend}</span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
 
       {/* Charts Grid */}
