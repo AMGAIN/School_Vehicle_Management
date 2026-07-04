@@ -1,0 +1,80 @@
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class StudentsService {
+    getStudentData() {
+        return [
+            {
+                id: "STU-001",
+                name: "Aarav Adhikari",
+                avatar: "AS",
+                grade: "5th",
+                assignedBus: "BUS-001",
+                route: "RT-01",
+                pickupLocation: "Gongabu",
+                dropLocation: "School Gate A",
+                parentName: "Rajesh Sharma",
+                parentPhone: " 98765 43210",
+                attendance: 95,
+                status: "active",
+            },
+            {
+                id: "STU-002",
+                name: "Diya Bist",
+                avatar: "DP",
+                grade: "7th",
+                assignedBus: "BUS-002",
+                route: "RT-02",
+                pickupLocation: "Sanepa",
+                dropLocation: "School Gate B",
+                parentName: "Amit Patel",
+                parentPhone: " 98765 43211",
+                attendance: 92,
+                status: "active",
+            },
+            {
+                id: "STU-003",
+                name: "Rohan Gupta",
+                avatar: "RG",
+                grade: "6th",
+                assignedBus: "BUS-001",
+                route: "RT-01",
+                pickupLocation: "Kalimati",
+                dropLocation: "School Gate A",
+                parentName: "Priya Gupta",
+                parentPhone: " 98765 43212",
+                attendance: 88,
+                status: "absent",
+            },
+            {
+                id: "STU-004",
+                name: "Ananya Baniya",
+                avatar: "AM",
+                grade: "8th",
+                assignedBus: "BUS-003",
+                route: "RT-03",
+                pickupLocation: "Kalanki",
+                dropLocation: "School Gate C",
+                parentName: "Vikram Mehta",
+                parentPhone: " 98765 43213",
+                attendance: 97,
+                status: "active",
+            },
+            {
+                id: "STU-005",
+                name: "Kabir Chhetri",
+                avatar: "KS",
+                grade: "5th",
+                assignedBus: "BUS-002",
+                route: "RT-02",
+                pickupLocation: "Sinamangal",
+                dropLocation: "School Gate B",
+                parentName: "Neha Singh",
+                parentPhone: " 98765 43214",
+                attendance: 90,
+                status: "active",
+            },
+        ];
+
+    }
+}

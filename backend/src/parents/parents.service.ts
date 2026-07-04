@@ -1,0 +1,81 @@
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class ParentsService {
+    getParentData() {
+        return [
+            {
+                id: "PAR-001",
+                name: "Rajesh Khanal",
+                email: "rajesh.khanal@email.com",
+                phone: "+91 98765 43210",
+                address: "Kalanki",
+                linkedStudents: ["Arjun Khanal", "Diya Khanal"],
+                qrAuthorized: true,
+                emergencyContact: true,
+                appAccess: true,
+                lastActive: "2 hours ago",
+                notificationPreferences: {
+                    boarding: true,
+                    drop: true,
+                    delays: true,
+                    alerts: true,
+                },
+            },
+            {
+                id: "PAR-002",
+                name: "Amit Paudel",
+                email: "amit.paudel@email.com",
+                phone: "+91 98765 43211",
+                address: "Gangabu",
+                linkedStudents: ["Diya Paudel"],
+                qrAuthorized: true,
+                emergencyContact: true,
+                appAccess: true,
+                lastActive: "5 hours ago",
+                notificationPreferences: {
+                    boarding: true,
+                    drop: true,
+                    delays: true,
+                    alerts: false,
+                },
+            },
+            {
+                id: "PAR-003",
+                name: "Priya Shahi",
+                email: "priya.shahi@email.com",
+                phone: "+91 98765 43212",
+                address: "Swayambhu",
+                linkedStudents: ["Rohan Shahi"],
+                qrAuthorized: false,
+                emergencyContact: true,
+                appAccess: false,
+                lastActive: "Never",
+                notificationPreferences: {
+                    boarding: true,
+                    drop: true,
+                    delays: false,
+                    alerts: false,
+                },
+            },
+            {
+                id: "PAR-004",
+                name: "Vikram Bhatta",
+                email: "vikram.bhatta@email.com",
+                phone: "+91 98765 43213",
+                address: "Balkumari",
+                linkedStudents: ["Ananya Bhatta"],
+                qrAuthorized: true,
+                emergencyContact: true,
+                appAccess: true,
+                lastActive: "1 day ago",
+                notificationPreferences: {
+                    boarding: true,
+                    drop: true,
+                    delays: true,
+                    alerts: true,
+                },
+            },
+        ];
+    }
+}
